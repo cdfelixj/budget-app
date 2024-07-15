@@ -2,8 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
+@layer base {
   body {
     @apply bg-slate-900 text-white;
+  }
+
+  button {
+    @apply hover:scale-110 transition-all duration-100;
+  }
+}
+
+@layer utilities {
+  .btn {
+    @apply px-4 py-2 text-sm text-white capitalize rounded-xl
+  }
+
+  .btn-primary {
+    @apply border bg-slate-700 border-slate-700 text-lime-400;
+  }
+
+  .btn-primary-outline {
+    @apply border border-lime-400 text-lime-400;
+  }
+
+  .btn-danger {
+    @apply border text-white bg-red-600 border-red-600
   }
 }
