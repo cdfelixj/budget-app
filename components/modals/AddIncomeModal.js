@@ -1,20 +1,20 @@
-import {useRef, useEffect} from 'react';
-import {currencyFormatter} from '@/lib/utils';
+import { useRef, useEffect, useContext } from 'react';
+import { currencyFormatter } from '@/lib/utils';
 import Modal from '@/components/Modal'
 
-//Firebase
-import { db } from '@/lib/firebase'
-import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore'
+import { financeContext } from '@/lib/store/finance-context'
+
+
 
 //Icons
 import { FaRegTrashAlt } from 'react-icons/fa'
 
 
-function AddIncomeModal({show, onClose}) {
+function AddIncomeModal({ show, onClose }) {
 
     const amountRef = useRef();
     const descriptionRef = useRef();
-
+    const {income, addIncomeItem, removeIncomeItem} = useContext(financeContext);
 
 
     const addIncomeHandler = async (e) => {
@@ -25,58 +25,30 @@ function AddIncomeModal({show, onClose}) {
             description: descriptionRef.current.value,
             createdAt: new Date()
         }
-        const collectionRef = collection(db, 'income');
-        try {
-            const docSnap = await addDoc(collectionRef, newIncome);
 
-            //Update state
-
-            setIncome(prevState => {
-                return [
-                    ...prevState,
-                    {
-                        id: docSnap.id,
-                        ...newIncome,
-                    }
-                ]
-            }
-            )
+        try{
+            await addIncomeItem(newIncome);
             descriptionRef.current.value = "";
             amountRef.current.value = "";
         } catch (error) {
-            console.error("Error adding document: ", error.message);
-
+            console.error("Error adding income: ", error.message);
         }
+
+        
+        
     };
 
     const deleteIncomeEntryHandler = async (incomeId) => {
-        const docRef = doc(db, 'income', incomeId);
+
         try {
-            await deleteDoc(docRef);
-            setIncome(prevState => {
-                return prevState.filter(i => i.id !== incomeId)
-            });
+            await removeIncomeItem(incomeId);
         } catch (error) {
-            console.error("Error deleting document: ", error.message);
+            console.error("Error deleting income: ", error.message);
         }
+
     };
 
-    useEffect(() => {
-        const getIncomeData = async () => {
-            const collectionRef = collection(db, 'income')
-            const docsSnap = await getDocs(collectionRef)
-            const data = docsSnap.docs.map(doc => {
-                return {
-                    id: doc.id,
-                    ...doc.data(),
-                    createdAt: new Date(doc.data().createdAt.toMillis())
-                };
-            });
-            setIncome(data);
-        };
-        getIncomeData();
-
-    }, []);
+    
 
 
     return (

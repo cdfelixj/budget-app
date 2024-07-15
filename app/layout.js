@@ -1,5 +1,7 @@
 import './globals.css'
 import Navigation from "@/components/Navigation";
+
+import FinanceContextProvider from '@/lib/store/finance-context';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -9,8 +11,11 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <Navigation/>
-        {children}
+        <FinanceContextProvider>
+          <Navigation />
+          {children}
+        </FinanceContextProvider>
+        
         </body>
     </html>
   )
