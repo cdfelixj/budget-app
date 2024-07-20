@@ -6,6 +6,7 @@ import { financeContext } from "@/lib/store/finance-context";
 import { v4 as uuidv4 } from "uuid";
 
 import Modal from "@/components/Modal";
+import { toast } from "react-toastify";
 
 function AddExpensesModal({ show, onClose }) {
     const [expenseAmount, setExpenseAmount] = useState("");
@@ -43,8 +44,10 @@ function AddExpensesModal({ show, onClose }) {
             setExpenseAmount("");
             setSelectedCategory(null);
             onClose();
+            toast.success("Expense added successfully");
         } catch (error) {
             console.log(error.message);
+            toast.error(error.message);
         }
     };
 
@@ -55,8 +58,10 @@ function AddExpensesModal({ show, onClose }) {
         try {
             await addCategory({ title, color, total: 0 });
             setShowAddExpense(false);
+            toast.success("Category added successfully");
         } catch (error) {
             console.log(error.message);
+            toast.error("error.message")
         }
     };
 
@@ -96,12 +101,12 @@ function AddExpensesModal({ show, onClose }) {
                             <input type="text" placeholder="Enter Title" ref={titleRef} />
 
                             <label>Pick Color</label>
-                            <input type="color" className="w-24 h-10" ref={colorRef}/>
+                            <input type="color" className="w-24 h-10" ref={colorRef} />
                             <button className="btn btn-primary-outline" onClick={() => {
                                 if (titleRef.current.value) {
                                     addCategoryHandler();
                                 } else {
-                                    alert("Title is required");
+                                    toast.warning("Please enter a title");
                                 }
                             }}>
                                 Create
