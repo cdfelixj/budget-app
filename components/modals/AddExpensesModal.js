@@ -97,10 +97,13 @@ function AddExpensesModal({ show, onClose }) {
 
                             <label>Pick Color</label>
                             <input type="color" className="w-24 h-10" ref={colorRef}/>
-                            <button
-                                onClick={addCategoryHandler}
-                                className="btn btn-primary-outline"
-                            >
+                            <button className="btn btn-primary-outline" onClick={() => {
+                                if (titleRef.current.value) {
+                                    addCategoryHandler();
+                                } else {
+                                    alert("Title is required");
+                                }
+                            }}>
                                 Create
                             </button>
                             <button
