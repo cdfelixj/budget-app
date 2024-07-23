@@ -1,4 +1,7 @@
-Here are some suggestions to improve the Finance Tracker description:
+
+<div align=center>
+  <img src="https://github.com/user-attachments/assets/c0122035-ed30-42c5-862f-6a369ec8d85c"/>
+</div>
 
 # Personal Finance Manager
 
@@ -11,10 +14,6 @@ Manage your finances on the go with this full-featured personal finance app. Tra
 - **Budgeting** - Set customizable budgets and get alerts when you're approaching your limits.  
 
 - **Reports & Insights** - Visualize spending trends over time. Identify areas to save more or spend less.
-
-- **Anytime, Anywhere Access** - Sync seamlessly across devices via a responsive web app. 
-
-- **Security & Privacy** - Authenticate with biometrics or passwords. Your financial data is securely stored.
 
 ## Technical Overview
 
