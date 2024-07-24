@@ -25,4 +25,6 @@ This single-page application utilizes modern JavaScript frameworks and serverles
 - Serverless Functions for custom backend logic
 - Styled with Tailwind CSS for a clean design
 
-Try it out now by deploying to your own Firebase project. Get started managing your finances smarter today!
+Try it out here:
+
+https://budget-app-nextjs-beta.vercel.app/
