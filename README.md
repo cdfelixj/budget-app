@@ -7,6 +7,9 @@
 
 Manage your finances on the go with this full-featured personal finance app. Track income and expenses, monitor your budget, and gain insight into your spending habits - all from your mobile device or browser.
 
+Deployed on Vercel
+https://budget-app-nextjs-beta.vercel.app/
+
 ## Key Features
 
 - **Income & Expense Tracking** - Add transactions and categorize them. See snapshots of inflows and outflows.
@@ -25,6 +28,3 @@ This single-page application utilizes modern JavaScript frameworks and serverles
 - Serverless Functions for custom backend logic
 - Styled with Tailwind CSS for a clean design
 
-Try it out here:
-
-https://budget-app-nextjs-beta.vercel.app/
